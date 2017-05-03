@@ -35,17 +35,18 @@ RUN apt-get -y install git \
     && autoconf \
     && ./configure \
     && make \
-    && make install
+    && make install \
+    && ldconfig /usr/local/lib
 
 RUN apt-get -y install wget \
     && apt-get build-dep curl \
-    && wget http://curl.haxx.se/download/curl-7.46.0.tar.bz2 \
-    && tar -xvjf curl-7.46.0.tar.bz2 \
-    && cd curl-7.46.0 \
+    && wget http://curl.haxx.se/download/curl-$CURL_VERSION.tar.bz2 \
+    && tar -xvjf curl-$CURL_VERSION.tar.bz2 \
+    && cd curl-$CURL_VERSION \
     && ./configure --with-nghttp2=/usr/local --with-ssl \
     && make \
     && make install \
-    && ldconfig
+    && ldconfig /usr/local/lib
 
 RUN apt-get -y purge \
       build-essential \
