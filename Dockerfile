@@ -5,8 +5,6 @@ ENV CURL_VERSION=7.47.0
 ENV CURL_UBUNTU_VERSION=1ubuntu2.2
 ENV DEBIAN_FRONTEND=noninteractive
 
-WORKDIR /tmp
-
 RUN apt-get -y update \
     && apt-get -y install apt-utils \
     && apt-get -y install software-properties-common \
